@@ -8,24 +8,26 @@
 </template>
 
 <script>
-import uuid from 'uuid'
+// import uuid from 'uuid';
 export default {
-  name: "AddTodo",
+  name: 'AddTodo',
   data() {
     return {
-      title: ""
+      title: ''
     };
   },
-  methods:{
-      addTodo(){
-          const newTodo={
-              id: uuid.v4(),
-              title: this.title,
-              completed:false
-          }
-        //   Send up to parent
-        this.$emit('add-todo', newTodo)
-      }
+  methods: {
+    addTodo(e) {
+      e.preventDefault();
+      const newTodo = {
+        // id: uuid.v4(),
+        title: this.title,
+        completed: false
+      };
+      //   Send up to parent
+      this.$emit('add-todo', newTodo);
+      this.title = '';
+    }
   }
 };
 </script>
@@ -34,11 +36,11 @@ export default {
 form {
   display: flex;
 }
-input[type="text"] {
+input[type='text'] {
   flex: 10;
   padding: 5px;
 }
-input[type="submit"] {
+input[type='submit'] {
   flex: 2;
 }
 </style>
